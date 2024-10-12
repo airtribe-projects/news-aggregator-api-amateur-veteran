@@ -55,7 +55,7 @@ tap.test('GET /users/preferences', async (t) => {
     const response = await server.get('/users/preferences').set('Authorization', `Bearer ${token}`);
     t.equal(response.status, 200);
     t.hasOwnProp(response.body, 'preferences');
-    t.same(response.body.preferences, mockUser.preferences);
+    t.same(response.body.preferences, []); // Checking before updating preferences is expected to return an empty array
     t.end();
 });
 
