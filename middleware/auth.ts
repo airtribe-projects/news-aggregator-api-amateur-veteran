@@ -5,13 +5,13 @@ import { verifyAuthTokenSignatureAndGetPayload } from '../util/auth_token';
 
 const MIN_PASSWORD_LENGTH = 5;
 
-function validateUserRegistrationData(req: Request, res: Response, next: NextFunction) {
+async function validateUserRegistrationData(req: Request, res: Response, next: NextFunction) {
     if (!req.body.email || !req.body.password) {
         return res.status(400).json({ success: false, reason: 'Email and password are required' });
     }
 
-    body('email').isEmail().run(req);
-    body('password').isLength({ min: MIN_PASSWORD_LENGTH }).run(req);
+    await body('email').isEmail().run(req);
+    await body('password').isLength({ min: MIN_PASSWORD_LENGTH }).run(req);
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -20,13 +20,13 @@ function validateUserRegistrationData(req: Request, res: Response, next: NextFun
     next();
 }
 
-function validateUserLoginData(req: Request, res: Response, next: NextFunction) {
+async function validateUserLoginData(req: Request, res: Response, next: NextFunction) {
     if (!req.body.email || !req.body.password) {
         return res.status(400).json({ success: false, reason: 'Email and password are required' });
     }
 
-    body('email').isEmail().run(req);
-    body('password').isLength({ min: MIN_PASSWORD_LENGTH }).run(req);
+    await body('email').isEmail().run(req);
+    await body('password').isLength({ min: MIN_PASSWORD_LENGTH }).run(req);
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
