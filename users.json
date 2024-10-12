@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "clark@superman.com",
+      "password": "$2b$10$SNZ.fUtyC9Bnh18XYq74BuWKkJ/b/6.yMBSQXv2Dql8XZlInLCzhu",
+      "id": "1728723375872",
+      "preferences": [
+        "movies",
+        "comics",
+        "games"
+      ]
+    }
+  ]
+}
